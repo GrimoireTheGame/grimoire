@@ -1,0 +1,14 @@
+Grimoire notes - 3.15.18
+
+Heya guys, gonna upload text files through git.
+
+Notes:
+
+Coding Subprojects
+------------------
+Robert:     UI/AI
+Cody:       AI
+Marz:       Health
+Angelo:     Level Design
+Unassigned: Experience allocation
+

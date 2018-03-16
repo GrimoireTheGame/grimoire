@@ -51,6 +51,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\2D\Scripts\CameraFollow.cs" />
+     <Compile Include="Assets\2D\Scripts\Platformer2DUserControl.cs" />
+     <Compile Include="Assets\2D\Scripts\PlatformerCharacter2D.cs" />
+     <Compile Include="Assets\2D\Scripts\Restarter.cs" />
      <Compile Include="Assets\ArmRotation.cs" />
      <Compile Include="Assets\Camera2DFollow.cs" />
      <Compile Include="Assets\GameMaster.cs" />

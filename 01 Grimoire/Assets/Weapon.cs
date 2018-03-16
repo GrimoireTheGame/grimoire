@@ -2,9 +2,10 @@
 using System.Collections;
 
 public class Weapon : MonoBehaviour {
-
+    //Press a button to start coroutine, then change ammunition to max
 	public float fireRate = 0;
 	public float Damage = 10;
+    public int ammunition = 6;
 	public LayerMask whatToHit;
 
     public Transform BulletTrailPrefab;
@@ -25,13 +26,14 @@ public class Weapon : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (fireRate == 0) {
+		if (fireRate == 0 && ammunition > 0) {
 			if (Input.GetButton ("Fire1")) {
-				Shoot();
-			}
+                Shoot();
+                
+            }
 		}
 		else {
-			if (Input.GetButton ("Fire1") && Time.time > timeToFire) {
+			if (Input.GetButton ("Fire1") && Time.time > timeToFire && ammunition > 0) {
 				timeToFire = Time.time + 1/fireRate;
 				Shoot();
 			}
@@ -42,10 +44,12 @@ public class Weapon : MonoBehaviour {
 		Vector2 mousePosition = new Vector2 (Camera.main.ScreenToWorldPoint (Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
 		Vector2 firePointPosition = new Vector2 (firePoint.position.x, firePoint.position.y);
 		RaycastHit2D hit = Physics2D.Raycast (firePointPosition, mousePosition-firePointPosition, 100, whatToHit);
+       // ammunition = ammunition - 1;
         if (Time.time >= timeToSpawnEffect)
         {
             Effect();
             timeToSpawnEffect = Time.time + 1 / effectSpawnRate;
+            ammunition = ammunition - 1;
         }
 		Debug.DrawLine (firePointPosition, (mousePosition-firePointPosition)*100, Color.cyan);
 		if (hit.collider != null) {
@@ -55,7 +59,7 @@ public class Weapon : MonoBehaviour {
 	}
     void Effect() {
         Instantiate(BulletTrailPrefab, firePoint.position, firePoint.rotation);
-       Transform clone = Instantiate(MuzzleFlashPrefab, firePoint.position, firePoint.rotation) as Transform;
+        Transform clone = Instantiate(MuzzleFlashPrefab, firePoint.position, firePoint.rotation) as Transform;
         clone.parent = firePoint;
         float size = Random.Range(0.6f, 0.9f);
         clone.localScale = new Vector3(size, size, size);

@@ -52,7 +52,7 @@ public class Weapon : MonoBehaviour {
 
         //button check "R"
         //fullReload
-
+        //test commit
          
 	}
 

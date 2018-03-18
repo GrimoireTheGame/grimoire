@@ -5,7 +5,8 @@ public class Weapon : MonoBehaviour {
     //Press a button to start coroutine, then change ammunition to max
 	public float fireRate = 0;
 	public float Damage = 10;
-    public int ammunition = 6;
+    public int maxAmmunition = 6;
+    public int ammunition;
 	public LayerMask whatToHit;
 
     public Transform BulletTrailPrefab;
@@ -15,10 +16,12 @@ public class Weapon : MonoBehaviour {
 
 	float timeToFire = 0;
 	Transform firePoint;
+    bool reloading = false;
 
-	// Use this for initialization
-	void Awake () {
-		firePoint = transform.Find ("FirePoint");
+    // Use this for initialization
+    void Awake () {
+        ammunition = maxAmmunition;
+        firePoint = transform.Find ("FirePoint");
 		if (firePoint == null) {
 			Debug.LogError ("No firePoint? WHAT?!");
 		}
@@ -38,7 +41,22 @@ public class Weapon : MonoBehaviour {
 				Shoot();
 			}
 		}
+        
+        //should change to partialReload
+        if (ammunition <= 0) {
+            if (reloading == false) {
+                reloading = true;
+                fullReload();
+            }
+        } 
+
+        //button check "R"
+        //fullReload
+
+         
 	}
+
+  
 	
 	void Shoot () {
 		Vector2 mousePosition = new Vector2 (Camera.main.ScreenToWorldPoint (Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
@@ -66,4 +84,29 @@ public class Weapon : MonoBehaviour {
         Destroy(clone.gameObject, 0.02f);
 
     }
+   
+   //reload full clip
+   void fullReload(){
+      StartCoroutine(fullReloadDelay());
+      
+    }
+   IEnumerator fullReloadDelay() {
+        yield return new WaitForSeconds(.8f);
+        Debug.Log("Reloading...");
+        ammunition = maxAmmunition;
+        reloading = false;
+    }
+    /*
+    //reload 1 / delay when not shooting
+    void partialReload() {
+        StartCoroutine(partReloadDelay());
+    }
+
+    IEnumerator partReloadDelay() {
+        yield return new WaitForSeconds(1.5f);
+        Debug.Log("Reloading...");
+        ammunition = ammunition + 1;
+    }
+    
+       */
 }

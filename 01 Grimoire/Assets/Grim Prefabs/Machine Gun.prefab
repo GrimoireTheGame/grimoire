@@ -9,16 +9,16 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1997229798765658}
+  m_RootGameObject: {fileID: 1618497162385270}
   m_IsPrefabParent: 1
---- !u!1 &1274370690789406
+--- !u!1 &1352202295782530
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4639646922252828}
+  - component: {fileID: 4401252724474808}
   m_Layer: 0
   m_Name: FirePoint
   m_TagString: Untagged
@@ -26,63 +26,65 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1997229798765658
+--- !u!1 &1618497162385270
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4216882422789078}
-  - component: {fileID: 212026287124278160}
-  - component: {fileID: 114069586527650666}
+  - component: {fileID: 4815944088932626}
+  - component: {fileID: 212283959830336162}
+  - component: {fileID: 114666860689144078}
   m_Layer: 0
-  m_Name: Pistol
+  m_Name: Machine Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4216882422789078
+--- !u!4 &4401252724474808
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1997229798765658}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.694, y: -0.03, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4639646922252828}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4639646922252828
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1274370690789406}
+  m_GameObject: {fileID: 1352202295782530}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.14, y: 0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4216882422789078}
+  m_Father: {fileID: 4815944088932626}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114069586527650666
+--- !u!4 &4815944088932626
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1618497162385270}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.694, y: -0.03, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4401252724474808}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114666860689144078
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1997229798765658}
+  m_GameObject: {fileID: 1618497162385270}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8987cf54184012f4cae188f7096a5f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 0
+  fireRate: 60
   Damage: 10
+  maxAmmunition: 6
+  ammunition: 0
   whatToHit:
     serializedVersion: 2
     m_Bits: 4294966527
@@ -90,13 +92,13 @@ MonoBehaviour:
     type: 2}
   MuzzleFlashPrefab: {fileID: 4217032166471640, guid: 8d78e96fb5f824f44b1e4d7a9449fb61,
     type: 2}
-  effectSpawnRate: 3
---- !u!212 &212026287124278160
+  effectSpawnRate: 6
+--- !u!212 &212283959830336162
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1997229798765658}
+  m_GameObject: {fileID: 1618497162385270}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -125,7 +127,7 @@ SpriteRenderer:
   m_SortingLayerID: 451397855
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300022, guid: bbafca92dac0a674f8c3bf62c7913e69, type: 3}
+  m_Sprite: {fileID: 21300020, guid: bbafca92dac0a674f8c3bf62c7913e69, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

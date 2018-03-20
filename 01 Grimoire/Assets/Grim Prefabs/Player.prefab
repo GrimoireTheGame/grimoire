@@ -327,6 +327,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 0
   Damage: 10
+  maxAmmunition: 6
+  ammunition: 0
   whatToHit:
     serializedVersion: 2
     m_Bits: 4294966527

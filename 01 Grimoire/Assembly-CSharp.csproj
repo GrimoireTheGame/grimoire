@@ -55,14 +55,14 @@
      <Compile Include="Assets\2D\Scripts\Platformer2DUserControl.cs" />
      <Compile Include="Assets\2D\Scripts\PlatformerCharacter2D.cs" />
      <Compile Include="Assets\2D\Scripts\Restarter.cs" />
-     <Compile Include="Assets\ArmRotation.cs" />
-     <Compile Include="Assets\Camera2DFollow.cs" />
-     <Compile Include="Assets\GameMaster.cs" />
-     <Compile Include="Assets\MoveTrail.cs" />
-     <Compile Include="Assets\Parallaxing.cs" />
-     <Compile Include="Assets\Player.cs" />
-     <Compile Include="Assets\Tiling.cs" />
-     <Compile Include="Assets\Weapon.cs" />
+     <Compile Include="Assets\Grim Scripts\ArmRotation.cs" />
+     <Compile Include="Assets\Grim Scripts\Camera2DFollow.cs" />
+     <Compile Include="Assets\Grim Scripts\GameMaster.cs" />
+     <Compile Include="Assets\Grim Scripts\MoveTrail.cs" />
+     <Compile Include="Assets\Grim Scripts\Parallaxing.cs" />
+     <Compile Include="Assets\Grim Scripts\Player.cs" />
+     <Compile Include="Assets\Grim Scripts\Tiling.cs" />
+     <Compile Include="Assets\Grim Scripts\Weapon.cs" />
      <None Include="Assets\hi.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

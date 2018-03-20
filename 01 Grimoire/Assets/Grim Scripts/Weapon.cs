@@ -52,7 +52,7 @@ public class Weapon : MonoBehaviour {
 
         //button check "R"
         //fullReload
-        //test commit
+        
          
 	}
 
@@ -91,7 +91,7 @@ public class Weapon : MonoBehaviour {
       
     }
    IEnumerator fullReloadDelay() {
-        yield return new WaitForSeconds(.8f);
+        yield return new WaitForSeconds(1.5f);
         Debug.Log("Reloading...");
         ammunition = maxAmmunition;
         reloading = false;

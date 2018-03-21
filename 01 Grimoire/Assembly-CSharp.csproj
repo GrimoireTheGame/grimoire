@@ -58,6 +58,7 @@
      <Compile Include="Assets\Grim Scripts\ArmRotation.cs" />
      <Compile Include="Assets\Grim Scripts\Camera2DFollow.cs" />
      <Compile Include="Assets\Grim Scripts\GameMaster.cs" />
+     <Compile Include="Assets\Grim Scripts\HUD.cs" />
      <Compile Include="Assets\Grim Scripts\MoveTrail.cs" />
      <Compile Include="Assets\Grim Scripts\Parallaxing.cs" />
      <Compile Include="Assets\Grim Scripts\Player.cs" />

@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour {
 
-    public Sprite[] BatterySprite;
+   
     public Image BatteryUI;
     private Player player;
+
 
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();

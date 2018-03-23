@@ -9,11 +9,12 @@ public class Player : MonoBehaviour {
         //Health is the number of hits you can take before you die
             //Note: Shields block Health
         
-        //Maximum number of Batteries
+        //Maximum number of Batteries overall
         public int maxBattery = 5;
         //Number of batteries you start with at start of game
+        public int currentMaxBattery = 1;
         public int currentBattery = 1;
-        //Current Shields
+        //Current Shields per battery
         public int currentShields = 10;
 
         public int Health = 1;
@@ -24,13 +25,17 @@ public class Player : MonoBehaviour {
 
 	public int fallBoundary = -20;
 
-
+    
 
     void Update()
     {
         if (transform.position.y <= fallBoundary)
         {
             DamagePlayer(9999999);
+        }
+        if (Input.GetButtonDown("Fire1"))
+        {
+            GameMaster.DecreaseCurrentBattery(this);
         }
     }
 

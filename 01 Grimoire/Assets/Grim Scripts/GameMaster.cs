@@ -35,16 +35,28 @@ public class GameMaster : MonoBehaviour {
         gm.StartCoroutine(gm.RespawnPlayer());
     }
 
-
+    //The number of batteries a player has can only be decreased by damage
     public static void DecreaseCurrentBattery(Player player) {
-        player.playerStats.currentBattery -= 1;
-        if (player.playerStats.currentBattery > 0) { 
+
+        
+        if (player.playerStats.currentBattery > 0) {
+            player.playerStats.currentBattery -= 1;
             player.playerStats.currentShields = 10;
         }
     }
+    //The player's current number of batteries should only increase when the shields regenerate
     public static void IncreaseCurrentBattery(Player player) {
         if (player.playerStats.currentBattery < player.playerStats.maxBattery) {
             player.playerStats.currentBattery += 1;
+        }
+    }
+    //The player's currentMaxBattery should only increase as a consequence of increasing stats
+    public static void IncreaseCurrentMaxBattery(Player player) {
+        if (player.playerStats.currentMaxBattery < player.playerStats.maxBattery)
+        {
+            player.playerStats.currentMaxBattery += 1;
+            player.playerStats.currentBattery += 1;
+            player.playerStats.currentShields = 10;
         }
     }
 

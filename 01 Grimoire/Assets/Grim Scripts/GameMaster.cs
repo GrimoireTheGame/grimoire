@@ -35,6 +35,19 @@ public class GameMaster : MonoBehaviour {
         gm.StartCoroutine(gm.RespawnPlayer());
     }
 
+
+    public static void DecreaseCurrentBattery(Player player) {
+        player.playerStats.currentBattery -= 1;
+        if (player.playerStats.currentBattery > 0) { 
+            player.playerStats.currentShields = 10;
+        }
+    }
+    public static void IncreaseCurrentBattery(Player player) {
+        if (player.playerStats.currentBattery < player.playerStats.maxBattery) {
+            player.playerStats.currentBattery += 1;
+        }
+    }
+
     //Player Stats
     //Stamina
     //Focus

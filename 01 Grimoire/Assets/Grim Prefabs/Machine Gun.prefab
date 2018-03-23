@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 114666860689144078}
   m_Layer: 0
   m_Name: Machine Gun
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,8 +83,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 60
   Damage: 10
-  maxAmmunition: 6
-  ammunition: 0
+  maxAmmunition: 30
+  ammunition: 30
   whatToHit:
     serializedVersion: 2
     m_Bits: 4294966527

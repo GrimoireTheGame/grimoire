@@ -33,6 +33,7 @@ public class Weapon : MonoBehaviour {
 			if (Input.GetButton ("Fire1")) {
                 Shoot();
                 
+                
             }
 		}
 		else {

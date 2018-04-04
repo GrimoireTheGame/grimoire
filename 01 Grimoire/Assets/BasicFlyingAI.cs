@@ -23,6 +23,9 @@ public class BasicFlyingAI : MonoBehaviour {
     public float speed = 300f;
     public ForceMode2D fMode;
 
+    public float offsetY;
+    public float offsetX;
+
     [HideInInspector]
     public bool pathIsEnded = false;
 
@@ -31,9 +34,13 @@ public class BasicFlyingAI : MonoBehaviour {
 
     // The waypoint we are currently moving towards
     private int currentWaypoint = 0;
+    private int offsetCounter = 0;
 
     void Start()
     {
+        offsetY = Random.Range(4f, 8f);
+        
+
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
 
@@ -42,9 +49,9 @@ public class BasicFlyingAI : MonoBehaviour {
             Debug.LogError("No player found? PANIC!");
             return;
         }
-
+        
         //Start a new path to the target position, return to the OnPathComplete Method
-        seeker.StartPath(transform.position, target.position, OnPathComplete);
+        seeker.StartPath(transform.position, new Vector3(target.position.x + offsetX, target.position.y + offsetY, target.position.z), OnPathComplete);
 
         StartCoroutine(UpdatePath ());
 
@@ -53,12 +60,24 @@ public class BasicFlyingAI : MonoBehaviour {
 
     IEnumerator UpdatePath ()
     {
-        if(target == null)
+        if (offsetCounter == 10)
+        {
+            offsetY = Random.Range(4f, 8f);
+            offsetX = Random.Range(-5f, 5f);
+            offsetCounter = 0;
+        }
+        else
+        {
+            offsetCounter++;
+        }
+
+        if (target == null)
         {
             //TODO: Insert a player search here.
             yield return false;
         }
-        seeker.StartPath(transform.position, target.position, OnPathComplete);
+
+        seeker.StartPath(transform.position, new Vector3(target.position.x + offsetX, target.position.y + offsetY, target.position.z), OnPathComplete);
 
         yield return new WaitForSeconds(1f / updateRate);
         StartCoroutine(UpdatePath());
@@ -110,12 +129,17 @@ public class BasicFlyingAI : MonoBehaviour {
         rb.AddForce(dir, fMode);
 
         float dist = Vector3.Distance(transform.position, path.vectorPath[currentWaypoint]);
+
+        Debug.Log("This is the path location" + path.vectorPath[currentWaypoint]);
+
+        // path.vectorPath is a list of nodes being incremented to the enemy path
+        // path.vectorPath[CurrentWayPoint] is the current node that is being accessed
         if (dist < nextWaypointDistance)
         {
             currentWaypoint++;
             return;
         }
-       
+
 
     }
 }

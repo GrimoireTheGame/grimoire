@@ -6,6 +6,9 @@ TagManager:
   tags:
   - GM
   - Weapon
+  - Fire
+  - Enemy
+  - Bullet
   layers:
   - Default
   - TransparentFX

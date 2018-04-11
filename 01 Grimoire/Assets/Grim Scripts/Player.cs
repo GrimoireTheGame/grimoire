@@ -33,10 +33,7 @@ public class Player : MonoBehaviour {
         {
             DamagePlayer(9999999);
         }
-        if (Input.GetButtonDown("Fire1"))
-        {
-            GameMaster.DecreaseCurrentBattery(this);
-        }
+        
     }
 
 

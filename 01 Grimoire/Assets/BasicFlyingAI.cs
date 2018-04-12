@@ -23,6 +23,7 @@ public class BasicFlyingAI : MonoBehaviour {
     public float speed = 300f;
     public ForceMode2D fMode;
 
+    //Variables to give the player and enemy some space ;)
     public float offsetY;
     public float offsetX;
 
@@ -36,9 +37,12 @@ public class BasicFlyingAI : MonoBehaviour {
     private int currentWaypoint = 0;
     private int offsetCounter = 0;
 
+    //This will be used for iteration of the searchingForPlayer function
+    private bool searchingForPlayer = false;
+
     void Start()
     {
-        offsetY = Random.Range(4f, 8f);
+        offsetY = Random.Range(4f, 8f);//Give our enemy a natural flow of distance
         
 
         seeker = GetComponent<Seeker>();
@@ -46,7 +50,11 @@ public class BasicFlyingAI : MonoBehaviour {
 
         if(target == null)
         {
-            Debug.LogError("No player found? PANIC!");
+            if (!searchingForPlayer)//Where'd the player go? :/
+            {
+                searchingForPlayer = true;
+                StartCoroutine(searchForPlayer());
+            }
             return;
         }
         
@@ -58,9 +66,26 @@ public class BasicFlyingAI : MonoBehaviour {
         //WRITE SOME MORE
     }
 
+    IEnumerator searchForPlayer()
+    {
+        GameObject sResult = GameObject.FindGameObjectWithTag("Player");
+        if(sResult == null)
+        {
+            //try searching for the player again after half a second
+            yield return new WaitForSeconds(0.5f);
+            StartCoroutine(searchForPlayer());
+        } else //player has been found, set the target and stop searching
+        {
+            target = sResult.transform;
+            searchingForPlayer = false;
+            StartCoroutine(UpdatePath());
+            yield return false;
+        }
+    }
+
     IEnumerator UpdatePath ()
     {
-        if (offsetCounter == 10)
+        if (offsetCounter == 6)//reset the offset occassionally to look more natural, rather than have sporadic movement
         {
             offsetY = Random.Range(4f, 8f);
             offsetX = Random.Range(-5f, 5f);
@@ -73,7 +98,11 @@ public class BasicFlyingAI : MonoBehaviour {
 
         if (target == null)
         {
-            //TODO: Insert a player search here.
+            if (!searchingForPlayer)//Where'd the player go? :/
+            {
+                searchingForPlayer = true;
+                StartCoroutine(searchForPlayer());
+            }
             yield return false;
         }
 
@@ -95,15 +124,20 @@ public class BasicFlyingAI : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        
-        if(target == null)
+
+        if (target == null)
         {
+            if (!searchingForPlayer)//Where'd the player go? :/
+            {
+                searchingForPlayer = true;
+                StartCoroutine(searchForPlayer());
+            }
             return;
         }
 
         //TODO: Always look at player?
 
-        if(path == null)
+        if (path == null)
         {
             return;
         }

@@ -2,9 +2,19 @@
 using System.Collections;
 
 public class MoveTrail : MonoBehaviour {
-	
-	public int moveSpeed = 230;
-	
+
+    public int moveSpeed = 230;
+
+    [SerializeField]
+    private int damage = 1;
+    
+    public int getDamage
+    {
+        get{ return damage; }
+    }
+
+
+
 	// Update is called once per frame
 	void Update () {
 		transform.Translate (Vector3.right * Time.deltaTime * moveSpeed);

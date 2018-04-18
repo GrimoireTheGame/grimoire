@@ -52,6 +52,14 @@ public class deathScript : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        MoveTrail _bullet = other.GetComponent<MoveTrail>();
 
+        if (_bullet != null)
+        {
+            DamageEnemy(_bullet.getDamage);
+        }
+    }
 
 }

@@ -21,9 +21,9 @@ public class MoveTrail : MonoBehaviour {
 		Destroy (gameObject, 1);
 	}
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collider.tag == "Enemy")
         {
             
             Destroy(gameObject);
